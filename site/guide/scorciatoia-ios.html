@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Scorciatoia iOS (automatica) · cycle-notifier</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="../index.html">cycle-notifier</a><a href="../index.html#guide">Guide</a><a href="../contatti.html">Per chi riceve gli avvisi</a><a href="../converti.html">Convertitore</a><a href="../dashboard.html">Dashboard</a><a href="../privacy.html">Privacy</a></nav></header>
+<main>
+<p><a href="../index.html#guide">&larr; Tutte le guide</a></p>
+<h1>Scorciatoia iOS (automatica) <span class="badge besteffort">best-effort</span></h1>
+<p class="lead">Una Scorciatoia con automazione giornaliera legge Salute e invia i dati al repository tramite l'API GitHub.</p>
+<div class="card"><b>Che cosa serve:</b> Nessun file: la Scorciatoia invia un <code>repository_dispatch</code> a GitHub, che salva <code>data/imports/shortcut-&lt;data&gt;.json</code>.<br><b>Dove va:</b> nel secret del repository o in <code>data/imports/</code> / <code>sync --file</code>, come indicato sotto.</div>
+<h2>Procedura</h2>
+<ol class="steps">
+<li>Crea su GitHub un <b>fine-grained personal access token</b> limitato a <b>questo solo repository</b>, con permesso <i>Contents: Read and write</i>. Conservalo solo nella Scorciatoia.</li>
+<li>In <i>Comandi rapidi</i> crea una nuova Scorciatoia:
+<ul>
+<li><b>Trova campioni di Salute</b>: tipo <i>Mestruazioni</i>, ultimi 90 giorni.</li>
+<li><b>Ripeti con ciascun elemento</b>: crea un <i>Dizionario</i> con <code>start</code> (data inizio, formato ISO 8601), <code>end</code> (data fine) e <code>flow</code> (flusso); aggiungilo a una variabile elenco.</li>
+<li><b>Ottieni contenuto da URL</b>: metodo <code>POST</code>, URL <code>https://api.github.com/repos/Carlol01/make-your-love-happier/dispatches</code>.</li>
+<li>Intestazioni: <code>Authorization: Bearer &lt;IL_TUO_TOKEN&gt;</code> e <code>Accept: application/vnd.github+json</code>.</li>
+<li>Corpo (JSON): <pre><code>{"event_type":"cycle-data","client_payload":{"samples":[ ... elenco di {"start","end","flow"} ... ]}}</code></pre></li>
+</ul></li>
+<li>In <i>Automazione</i> crea un'automazione personale (ogni giorno, per esempio alle 07:30) che esegue la Scorciatoia e imposta <b>Esegui immediatamente</b>, così non chiede conferma.</li>
+<li>Il workflow <code>daily.yml</code> reagisce all'evento <code>cycle-data</code>, salva il payload con <code>ingest-dispatch</code> e lo integra nello storico.</li>
+</ol>
+<p>Dettagli e struttura del payload: <a href="https://github.com/Carlol01/make-your-love-happier/blob/main/shortcuts/README.md">shortcuts/README.md</a>.</p>
+<h2>Limiti da conoscere</h2>
+<ul><li>Procedura manuale: dipende dall'app Comandi rapidi, che cambia da una versione di iOS all'altra.</li><li>Il token ha accesso in scrittura al repository: tienilo nella Scorciatoia, mai in un file condiviso; se lo perdi revocalo da GitHub.</li><li>Le automazioni iOS non girano se il telefono è bloccato in certe condizioni o in modalità di risparmio energetico: i dati arrivano al primo avvio riuscito.</li></ul>
+<p class="muted">Affidabilità della fonte: <b>stabile</b> = formato documentato; <b>best-effort</b> = formato non documentato, letto in modo tollerante; <b>non ufficiale</b> = accesso senza API pubblica, può smettere di funzionare.</p>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Privacy · cycle-notifier</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="index.html">cycle-notifier</a><a href="index.html#guide">Guide</a><a href="contatti.html">Per chi riceve gli avvisi</a><a href="converti.html">Convertitore</a><a href="dashboard.html">Dashboard</a><a href="privacy.html">Privacy</a></nav></header>
+<main>
+<h1>Privacy</h1>
+<p class="lead">Informazioni sulla gestione dei dati in questo progetto.</p>
+<h2>Questo sito</h2>
+<p>È una raccolta di pagine statiche pubbliche. Non usa cookie, tracciamento, font o script esterni e non contiene dati personali o date del ciclo. Gli strumenti (<a href="converti.html">convertitore</a> e <a href="dashboard.html">dashboard</a>) funzionano interamente nel tuo browser: i file che apri non vengono inviati da nessuna parte.</p>
+<h2>Dove stanno i dati</h2>
+<ul>
+<li><b>Storico del ciclo</b>: <code>data/cycles.json</code> nel repository. Tienilo <b>privato</b>. Facoltativamente è cifrato con una chiave (<code>CYCLES_KEY</code>).</li>
+<li><b>Contatti</b> (nome, email, consenso): solo nel secret <code>CONTACTS_JSON</code> o nel file locale <code>config/contacts.local.json</code> (ignorato da git). Lo stato degli invii salva solo gli identificativi dei contatti, mai gli indirizzi.</li>
+<li><b>Credenziali</b>: solo nei secret del repository.</li>
+</ul>
+<h2>Calendario in abbonamento</h2>
+<p>Il feed è protetto solo dall'indirizzo difficile da indovinare: chi lo possiede può leggerlo. Contiene al massimo le prossime 1-3 date previste, titoli neutri configurabili e descrizioni minime. Se l'indirizzo viene diffuso, va rigenerato.</p>
+<h2>Consenso</h2>
+<p>I promemoria partono solo verso contatti che hanno dato il consenso esplicito e che sono attivi. Ogni email spiega come smettere di riceverli.</p>
+<h2>Limiti</h2>
+<p>Nessun sistema è a prova di errore: controlla chi ha accesso al repository, ai secret e al calendario. Questo progetto non è un dispositivo medico.</p>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

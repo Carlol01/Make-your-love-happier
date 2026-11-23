@@ -1,0 +1,118 @@
+:root {
+  --bg: #fbf8f6;
+  --fg: #231f20;
+  --muted: #6b6264;
+  --card: #ffffff;
+  --line: #e7dfdc;
+  --accent: #b23a5b;
+  --accent-fg: #ffffff;
+  --ok: #1f7a4d;
+  --warn: #9a6200;
+  --bad: #a12a2a;
+  --code: #f3ecea;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1617;
+    --fg: #f1eae8;
+    --muted: #b3a7a9;
+    --card: #231e20;
+    --line: #3a3235;
+    --accent: #e57a9a;
+    --accent-fg: #1a1617;
+    --ok: #6fcf9b;
+    --warn: #e8b85a;
+    --bad: #f08a8a;
+    --code: #2c2527;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+a { color: var(--accent); }
+header.site {
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+header.site nav {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  align-items: center;
+}
+header.site .brand { font-weight: 700; margin-right: auto; text-decoration: none; color: var(--fg); }
+header.site a { text-decoration: none; }
+header.site a:hover { text-decoration: underline; }
+main { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+footer { max-width: 52rem; margin: 0 auto; padding: 1rem; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--line); }
+h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 0.5rem; }
+h2 { font-size: 1.35rem; margin: 2rem 0 0.5rem; }
+h3 { font-size: 1.1rem; margin: 1.5rem 0 0.25rem; }
+p, li { max-width: 46rem; }
+.lead { font-size: 1.1rem; color: var(--muted); }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+.card.warn { border-left: 5px solid var(--warn); }
+.card.ok { border-left: 5px solid var(--ok); }
+.card.bad { border-left: 5px solid var(--bad); }
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.grid .card { margin: 0; }
+.grid .card a.title { font-weight: 600; display: block; margin-bottom: 0.25rem; }
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid currentColor;
+  vertical-align: middle;
+}
+.badge.stabile { color: var(--ok); }
+.badge.besteffort { color: var(--warn); }
+.badge.nonufficiale { color: var(--bad); }
+code, pre { background: var(--code); border-radius: 6px; font: 0.9em ui-monospace, SFMono-Regular, Menlo, monospace; }
+code { padding: 0.1rem 0.35rem; }
+pre { padding: 0.75rem 1rem; overflow-x: auto; }
+pre code { padding: 0; background: none; }
+ol.steps { padding-left: 1.25rem; }
+ol.steps li { margin: 0.5rem 0; }
+.flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1rem 0; }
+.flow span.node { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 0.4rem 0.75rem; }
+.flow span.arrow { color: var(--muted); }
+button, .button, input[type="file"]::file-selector-button {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: 0;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+button.secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+button:disabled { opacity: 0.5; cursor: default; }
+input[type="file"] { max-width: 100%; }
+textarea { width: 100%; min-height: 10rem; font: 0.85rem ui-monospace, monospace; background: var(--code); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 0.5rem; }
+.stats { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); margin: 1rem 0; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem; }
+.stat b { display: block; font-size: 1.5rem; }
+.stat span { color: var(--muted); font-size: 0.85rem; }
+svg.timeline { width: 100%; height: auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+svg.timeline .bar { fill: var(--accent); }
+svg.timeline .axis { stroke: var(--line); }
+svg.timeline text { fill: var(--muted); font-size: 11px; }
+.muted { color: var(--muted); }
+.hidden { display: none; }
+@media (max-width: 30rem) { h1 { font-size: 1.5rem; } }

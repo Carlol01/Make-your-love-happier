@@ -1,0 +1,12 @@
+[
+  {
+    "id": "marco",
+    "name": "Marco",
+    "email": "marco@example.com",
+    "lang": "it",
+    "channels": ["email"],
+    "offsets_days": [3, 2],
+    "consent": { "given": true, "date": "2026-11-20", "method": "risposta via email" },
+    "active": true
+  }
+]

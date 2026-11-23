@@ -1,0 +1,92 @@
+name: Promemoria giornaliero
+
+# Nota: gli orari cron sono in UTC e GitHub può ritardarli anche di parecchi minuti.
+# Il secondo orario (12:40 UTC) serve da recupero: i duplicati sono evitati da data/state.json.
+# Dopo 60 giorni di inattività del repository GitHub disattiva i workflow pianificati:
+# i commit automatici di questo workflow (aggiornamento dei dati) aiutano, ma ricontrolla ogni tanto.
+on:
+  schedule:
+    - cron: "40 6 * * *"
+    - cron: "40 12 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Prova: nessuna email, nessuna scrittura"
+        type: boolean
+        default: true
+  repository_dispatch:
+    types: [cycle-data]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cycle-notifier-data
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Installa
+        run: pip install ".[garmin,crypto]"
+
+      - name: Salva i dati inviati dallo Shortcut iOS
+        if: github.event_name == 'repository_dispatch'
+        run: python -m cycle_notifier ingest-dispatch
+
+      - name: Esegui
+        env:
+          ICS_URLS: ${{ secrets.ICS_URLS }}
+          CONTACTS_JSON: ${{ secrets.CONTACTS_JSON }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_REPLY_TO: ${{ secrets.SMTP_REPLY_TO }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+          GARMIN_TOKENS: ${{ secrets.GARMIN_TOKENS }}
+          GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
+          GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+          CYCLES_KEY: ${{ secrets.CYCLES_KEY }}
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          FEED_TOKEN: ${{ secrets.FEED_TOKEN }}
+          FEED_MODE: ${{ vars.FEED_MODE || 'gist' }}
+          EMAIL_PROVIDER: ${{ vars.EMAIL_PROVIDER }}
+          NOTIFY_DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '1' || vars.NOTIFY_DRY_RUN }}
+        run: python -m cycle_notifier run
+
+      - name: Commit dei dati aggiornati
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica ai dati."
+          else
+            git commit -m "chore(data): aggiornamento automatico [skip ci]"
+            git pull --rebase
+            git push
+          fi
+
+  pages:
+    # Pubblica il feed ICS su GitHub Pages solo se FEED_MODE=pages.
+    needs: run
+    if: ${{ vars.FEED_MODE == 'pages' }}
+    uses: ./.github/workflows/pages.yml
+    secrets: inherit
+    permissions:
+      contents: read
+      pages: write
+      id-token: write

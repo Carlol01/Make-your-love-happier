@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Promemoria del ciclo · cycle-notifier</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="index.html">cycle-notifier</a><a href="index.html#guide">Guide</a><a href="contatti.html">Per chi riceve gli avvisi</a><a href="converti.html">Convertitore</a><a href="dashboard.html">Dashboard</a><a href="privacy.html">Privacy</a></nav></header>
+<main>
+<h1>cycle-notifier</h1>
+<p class="lead">Calcola in locale la prossima data prevista del ciclo e avvisa, con il consenso di chi li riceve, qualche giorno prima, via email e con un calendario in abbonamento.</p>
+<div class="card warn"><b>Importante.</b> Le previsioni sono stime statistiche, possono sbagliare di diversi giorni e non sono consigli medici né un metodo contraccettivo.</div>
+<h2>Come funziona</h2>
+<div class="flow"><span class="node">Le tue fonti (calendario, app, file)</span><span class="arrow">&rarr;</span><span class="node">GitHub Actions (ogni giorno)</span><span class="arrow">&rarr;</span><span class="node">Email ai contatti con consenso</span><span class="arrow">+</span><span class="node">Calendario in abbonamento</span></div>
+<p>Un workflow giornaliero legge le fonti, aggiorna lo storico in <code>data/</code>, calcola la previsione e invia i promemoria (di norma 3 e 2 giorni prima). Nessun servizio esterno riceve i tuoi dati oltre al provider email e a GitHub.</p>
+<h2 id="guide">Guide per collegare le fonti</h2>
+<p>Scegli la fonte che usi già. Nessuna app (Flo, Clue, Natural Cycles, Stardust, Period Tracker) offre un'API pubblica: dove non c'è un'esportazione ufficiale il supporto è <i>best-effort</i>.</p>
+<div class="grid"><div class="card"><a class="title" href="guide/google-ics.html">Google Calendar (indirizzo iCal segreto)</a><span class="badge stabile">stabile</span><p class="muted">La fonte più semplice e robusta: un calendario con eventi tipo "Ciclo".</p></div><div class="card"><a class="title" href="guide/apple-health.html">Apple Salute (export.zip)</a><span class="badge stabile">stabile</span><p class="muted">Apple Salute registra il flusso mestruale; l'esportazione è un file ZIP manuale.</p></div><div class="card"><a class="title" href="guide/scorciatoia-ios.html">Scorciatoia iOS (automatica)</a><span class="badge besteffort">best-effort</span><p class="muted">Una Scorciatoia con automazione giornaliera legge Salute e invia i dati al repository tramite l'API GitHub.</p></div><div class="card"><a class="title" href="guide/health-connect.html">Android Health Connect (esportazione)</a><span class="badge nonufficiale">non ufficiale</span><p class="muted">Health Connect non ha un'API cloud: l'unica via è l'esportazione manuale dal telefono.</p></div><div class="card"><a class="title" href="guide/garmin.html">Garmin Connect</a><span class="badge nonufficiale">non ufficiale</span><p class="muted">Per chi registra il ciclo su un dispositivo Garmin: i dati vengono letti con la libreria non ufficiale <code>garminconnect</code>.</p></div><div class="card"><a class="title" href="guide/flo.html">Flo</a><span class="badge besteffort">best-effort</span><p class="muted">Flo non ha un'API pubblica; è possibile richiedere l'esportazione dei dati personali (GDPR).</p></div><div class="card"><a class="title" href="guide/clue.html">Clue</a><span class="badge besteffort">best-effort</span><p class="muted">Clue permette di esportare i propri dati in un file <code>.cluedata</code> (JSON).</p></div><div class="card"><a class="title" href="guide/natural-cycles.html">Natural Cycles</a><span class="badge besteffort">best-effort</span><p class="muted">Natural Cycles permette di scaricare i dati in formato CSV.</p></div><div class="card"><a class="title" href="guide/stardust.html">Stardust</a><span class="badge besteffort">best-effort</span><p class="muted">Stardust non pubblica API né un formato di esportazione documentato.</p></div><div class="card"><a class="title" href="guide/period-tracker.html">Period Tracker (GP Apps)</a><span class="badge besteffort">best-effort</span><p class="muted">L'app permette di esportare/fare backup dei dati in CSV, secondo la versione.</p></div><div class="card"><a class="title" href="guide/csv-generico.html">CSV / JSON generico</a><span class="badge stabile">stabile</span><p class="muted">Il formato più semplice: funziona con qualunque app, o a mano.</p></div></div>
+<h2>Strumenti nel browser</h2>
+<ul>
+<li><a href="converti.html">Convertitore</a>: trasforma un'esportazione in CSV/JSON generico, tutto nel tuo browser.</li>
+<li><a href="dashboard.html">Dashboard</a>: apri <code>data/cycles.json</code> dal tuo computer per vedere statistiche e linea del tempo.</li>
+<li><a href="contatti.html">Per chi riceve gli avvisi</a>: che cosa arriva, come iscriversi al calendario, come smettere.</li>
+</ul>
+<div class="card ok"><b>Privacy.</b> Questo sito è statico e pubblico, senza cookie, tracciamento o script esterni. Non contiene alcun dato personale: i dati vivono nel repository (che dovresti tenere privato) e nei secret. <a href="privacy.html">Dettagli</a>.</div>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HealthData locale="it_IT">
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-06-06 08:15:00 +0200" endDate="2026-06-06 08:15:00 +0200" value="HKCategoryValueMenstrualFlowHeavy"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-06-07 08:15:00 +0200" endDate="2026-06-07 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-06-08 08:15:00 +0200" endDate="2026-06-08 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-06-09 08:15:00 +0200" endDate="2026-06-09 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-06-10 08:15:00 +0200" endDate="2026-06-10 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-07-04 08:15:00 +0200" endDate="2026-07-04 08:15:00 +0200" value="HKCategoryValueMenstrualFlowHeavy"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-07-05 08:15:00 +0200" endDate="2026-07-05 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-07-06 08:15:00 +0200" endDate="2026-07-06 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-07-07 08:15:00 +0200" endDate="2026-07-07 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-07-08 08:15:00 +0200" endDate="2026-07-08 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-01 08:15:00 +0200" endDate="2026-08-01 08:15:00 +0200" value="HKCategoryValueMenstrualFlowHeavy"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-02 08:15:00 +0200" endDate="2026-08-02 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-03 08:15:00 +0200" endDate="2026-08-03 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-04 08:15:00 +0200" endDate="2026-08-04 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-05 08:15:00 +0200" endDate="2026-08-05 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-29 08:15:00 +0200" endDate="2026-08-29 08:15:00 +0200" value="HKCategoryValueMenstrualFlowHeavy"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-30 08:15:00 +0200" endDate="2026-08-30 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-08-31 08:15:00 +0200" endDate="2026-08-31 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-01 08:15:00 +0200" endDate="2026-09-01 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-02 08:15:00 +0200" endDate="2026-09-02 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-26 08:15:00 +0200" endDate="2026-09-26 08:15:00 +0200" value="HKCategoryValueMenstrualFlowHeavy"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-27 08:15:00 +0200" endDate="2026-09-27 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-28 08:15:00 +0200" endDate="2026-09-28 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-29 08:15:00 +0200" endDate="2026-09-29 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-30 08:15:00 +0200" endDate="2026-09-30 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-10-24 08:15:00 +0200" endDate="2026-10-24 08:15:00 +0200" value="HKCategoryValueMenstrualFlowHeavy"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-10-25 08:15:00 +0200" endDate="2026-10-25 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-10-26 08:15:00 +0200" endDate="2026-10-26 08:15:00 +0200" value="HKCategoryValueMenstrualFlowMedium"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-10-27 08:15:00 +0200" endDate="2026-10-27 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-10-28 08:15:00 +0200" endDate="2026-10-28 08:15:00 +0200" value="HKCategoryValueMenstrualFlowLight"/>
+  <Record type="HKCategoryTypeIdentifierMenstrualFlow" sourceName="Health" startDate="2026-09-10 09:00:00 +0200" endDate="2026-09-10 09:00:00 +0200" value="HKCategoryValueMenstrualFlowNone"/>
+  <Record type="HKCategoryTypeIdentifierIntermenstrualBleeding" sourceName="Health" startDate="2026-10-10 09:00:00 +0200" endDate="2026-10-10 09:00:00 +0200" value="HKCategoryValueNotApplicable"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Phone" startDate="2026-10-10 09:00:00 +0200" endDate="2026-10-10 09:10:00 +0200" value="120"/>
+</HealthData>

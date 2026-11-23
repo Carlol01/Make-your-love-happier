@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Natural Cycles · cycle-notifier</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="../index.html">cycle-notifier</a><a href="../index.html#guide">Guide</a><a href="../contatti.html">Per chi riceve gli avvisi</a><a href="../converti.html">Convertitore</a><a href="../dashboard.html">Dashboard</a><a href="../privacy.html">Privacy</a></nav></header>
+<main>
+<p><a href="../index.html#guide">&larr; Tutte le guide</a></p>
+<h1>Natural Cycles <span class="badge besteffort">best-effort</span></h1>
+<p class="lead">Natural Cycles permette di scaricare i dati in formato CSV.</p>
+<div class="card"><b>Che cosa serve:</b> Un file CSV con una colonna data e una colonna <i>Menstruation</i>.<br><b>Dove va:</b> nel secret del repository o in <code>data/imports/</code> / <code>sync --file</code>, come indicato sotto.</div>
+<h2>Procedura</h2>
+<ol class="steps">
+<li>Dall'app o dal sito, nelle impostazioni dell'account, cerca l'esportazione dei dati (CSV).</li>
+<li>Importalo: <pre><code>python -m cycle_notifier sync --file natural-cycles.csv</code></pre></li>
+</ol>
+<h2>Limiti da conoscere</h2>
+<ul><li>Le righe con <i>MENSTRUATION</i> contano come flusso; <i>SPOTTING</i> è escluso a meno che <code>include_spotting = true</code>.</li><li>Non esiste un'API pubblica; il formato può cambiare.</li></ul>
+<p class="muted">Affidabilità della fonte: <b>stabile</b> = formato documentato; <b>best-effort</b> = formato non documentato, letto in modo tollerante; <b>non ufficiale</b> = accesso senza API pubblica, può smettere di funzionare.</p>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

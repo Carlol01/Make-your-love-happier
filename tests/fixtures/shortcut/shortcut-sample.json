@@ -1,0 +1,21 @@
+{
+  "source": "ios_shortcut",
+  "generated_at": "2026-11-01T08:00:00Z",
+  "samples": [
+    {
+      "start": "2026-08-29",
+      "end": "2026-09-02",
+      "flow": "medium"
+    },
+    {
+      "start": "2026-09-26",
+      "end": "2026-09-30",
+      "flow": "medium"
+    },
+    {
+      "start": "2026-10-24",
+      "end": "2026-10-28",
+      "flow": "medium"
+    }
+  ]
+}

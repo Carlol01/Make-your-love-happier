@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.env
+config/contacts.local.json
+.DS_Store
+# Dati personali grezzi: non committare export non anonimizzati
+data/imports/*
+!data/imports/.gitkeep
+!data/imports/shortcut-*.json
+*.cluedata
+export.zip
+export.xml
+
+# Le fixture di test sono sintetiche e vanno committate
+!tests/fixtures/**

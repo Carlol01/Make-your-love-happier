@@ -1,0 +1,61 @@
+name: Sito (GitHub Pages)
+
+# Il sito in site/ è PUBBLICO e non contiene dati personali.
+# Il feed ICS (solo con FEED_MODE=pages) viene generato qui e MAI committato.
+on:
+  push:
+    branches: [main]
+    paths: ["site/**"]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Copia il sito
+        run: |
+          mkdir -p build
+          cp -r site build/site
+
+      - uses: actions/setup-python@v5
+        if: ${{ vars.FEED_MODE == 'pages' }}
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Genera il feed ICS (token nel percorso)
+        if: ${{ vars.FEED_MODE == 'pages' }}
+        env:
+          FEED_MODE: pages
+          FEED_TOKEN: ${{ secrets.FEED_TOKEN }}
+          CYCLES_KEY: ${{ secrets.CYCLES_KEY }}
+        run: |
+          pip install ".[crypto]"
+          test -n "$FEED_TOKEN" || { echo "FEED_TOKEN mancante"; exit 1; }
+          python -m cycle_notifier ics --out "build/site/f/$FEED_TOKEN/cycle.ics"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

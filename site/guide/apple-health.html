@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Apple Salute (export.zip) · cycle-notifier</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="../index.html">cycle-notifier</a><a href="../index.html#guide">Guide</a><a href="../contatti.html">Per chi riceve gli avvisi</a><a href="../converti.html">Convertitore</a><a href="../dashboard.html">Dashboard</a><a href="../privacy.html">Privacy</a></nav></header>
+<main>
+<p><a href="../index.html#guide">&larr; Tutte le guide</a></p>
+<h1>Apple Salute (export.zip) <span class="badge stabile">stabile</span></h1>
+<p class="lead">Apple Salute registra il flusso mestruale; l'esportazione è un file ZIP manuale.</p>
+<div class="card"><b>Che cosa serve:</b> <code>export.zip</code> (o il suo <code>export.xml</code> estratto).<br><b>Dove va:</b> nel secret del repository o in <code>data/imports/</code> / <code>sync --file</code>, come indicato sotto.</div>
+<h2>Procedura</h2>
+<ol class="steps">
+<li>Su iPhone apri <i>Salute</i> &rarr; tocca la tua foto/iniziali in alto a destra &rarr; <b>Esporta tutti i dati salute</b>.</li>
+<li>Invia il file <code>export.zip</code> al computer (AirDrop, Files, email a te stesso).</li>
+<li>Importalo in locale (il file è spesso di centinaia di MB e contiene molti dati sensibili: <b>non committarlo</b>):
+<pre><code>python -m cycle_notifier sync --file export.zip</code></pre></li>
+<li>In alternativa estrai <code>export.xml</code> e aprilo nel <a href="../converti.html">convertitore</a> (elaborazione nel browser, nessun upload), poi usa il JSON ottenuto con <code>sync --file</code>.</li>
+</ol>
+<h2>Limiti da conoscere</h2>
+<ul><li>Non esiste un'API cloud per Apple Salute: serve l'esportazione manuale oppure la <a href="scorciatoia-ios.html">Scorciatoia iOS</a> automatica.</li><li>Viene letto solo il flusso mestruale; il sanguinamento intermestruale è ignorato a meno che <code>include_spotting = true</code>.</li></ul>
+<p class="muted">Affidabilità della fonte: <b>stabile</b> = formato documentato; <b>best-effort</b> = formato non documentato, letto in modo tollerante; <b>non ufficiale</b> = accesso senza API pubblica, può smettere di funzionare.</p>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

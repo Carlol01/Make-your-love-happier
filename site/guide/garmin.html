@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Garmin Connect · cycle-notifier</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="../index.html">cycle-notifier</a><a href="../index.html#guide">Guide</a><a href="../contatti.html">Per chi riceve gli avvisi</a><a href="../converti.html">Convertitore</a><a href="../dashboard.html">Dashboard</a><a href="../privacy.html">Privacy</a></nav></header>
+<main>
+<p><a href="../index.html#guide">&larr; Tutte le guide</a></p>
+<h1>Garmin Connect <span class="badge nonufficiale">non ufficiale</span></h1>
+<p class="lead">Per chi registra il ciclo su un dispositivo Garmin: i dati vengono letti con la libreria non ufficiale <code>garminconnect</code>.</p>
+<div class="card"><b>Che cosa serve:</b> Nessun file: un token di accesso (<code>GARMIN_TOKENS</code>) o, in alternativa, email e password.<br><b>Dove va:</b> nel secret del repository o in <code>data/imports/</code> / <code>sync --file</code>, come indicato sotto.</div>
+<h2>Procedura</h2>
+<ol class="steps">
+<li>Installa l'extra in locale: <code>pip install ".[garmin]"</code>.</li>
+<li>Esegui <code>python -m cycle_notifier garmin-login</code>: inserisci email, password ed eventuale codice MFA. Il comando stampa il token.</li>
+<li>Salvalo come secret: <pre><code>gh secret set GARMIN_TOKENS</code></pre></li>
+<li>Solo se non puoi usare i token: secret <code>GARMIN_EMAIL</code> e <code>GARMIN_PASSWORD</code> (sconsigliato: niente MFA).</li>
+</ol>
+<h2>Limiti da conoscere</h2>
+<ul><li>Non esiste un'API pubblica per questi dati: la libreria imita l'app e può smettere di funzionare in qualsiasi momento; l'uso potrebbe violare i termini di servizio di Garmin.</li><li>I token scadono: se il workflow segnala un errore Garmin, ripeti <code>garmin-login</code>.</li><li>Un errore Garmin non blocca la corsa se esistono altre fonti o dati già salvati.</li></ul>
+<p class="muted">Affidabilità della fonte: <b>stabile</b> = formato documentato; <b>best-effort</b> = formato non documentato, letto in modo tollerante; <b>non ufficiale</b> = accesso senza API pubblica, può smettere di funzionare.</p>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Convertitore · cycle-notifier</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="index.html">cycle-notifier</a><a href="index.html#guide">Guide</a><a href="contatti.html">Per chi riceve gli avvisi</a><a href="converti.html">Convertitore</a><a href="dashboard.html">Dashboard</a><a href="privacy.html">Privacy</a></nav></header>
+<main>
+<h1>Convertitore di esportazioni</h1>
+<p class="lead">Trasforma l'esportazione di un'app in un JSON generico da importare con <code>sync --file</code>. Tutto avviene nel tuo browser: nessun file viene caricato.</p>
+<div class="card">
+<p><label for="order"><b>Ordine delle date ambigue</b></label><br>
+<select id="order"><option value="DMY">giorno/mese/anno (Italia)</option><option value="MDY">mese/giorno/anno</option><option value="YMD">anno/mese/giorno</option></select></p>
+<p><label for="file"><b>File</b> (.json, .cluedata, .csv oppure export.xml di Apple Salute)</label><br>
+<input id="file" type="file" accept=".json,.cluedata,.csv,.txt,.xml"></p>
+<p class="muted">I file ZIP non sono supportati: estrai prima il contenuto. L'XML di Apple Salute viene letto a blocchi, quindi anche file molto grandi vanno bene. Formati non documentati: il risultato è <i>best-effort</i>, controllalo.</p>
+<span id="progress" class="muted"></span>
+</div>
+<div id="result" class="hidden">
+<h2>Risultato: <span id="count">0</span> periodi</h2>
+<p id="warnings" class="muted"></p>
+<textarea id="output" readonly aria-label="JSON generico"></textarea>
+<p><button id="download" type="button">Scarica periodi.json</button> <button id="copy" type="button" class="secondary">Copia</button></p>
+</div>
+<script src="assets/parsers.js"></script>
+<script src="assets/converter.js"></script>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

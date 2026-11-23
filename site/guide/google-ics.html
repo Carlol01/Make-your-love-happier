@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Google Calendar (indirizzo iCal segreto) · cycle-notifier</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="../index.html">cycle-notifier</a><a href="../index.html#guide">Guide</a><a href="../contatti.html">Per chi riceve gli avvisi</a><a href="../converti.html">Convertitore</a><a href="../dashboard.html">Dashboard</a><a href="../privacy.html">Privacy</a></nav></header>
+<main>
+<p><a href="../index.html#guide">&larr; Tutte le guide</a></p>
+<h1>Google Calendar (indirizzo iCal segreto) <span class="badge stabile">stabile</span></h1>
+<p class="lead">La fonte più semplice e robusta: un calendario con eventi tipo "Ciclo".</p>
+<div class="card"><b>Che cosa serve:</b> Un URL segreto in formato iCal, da salvare nel secret <code>ICS_URLS</code>.<br><b>Dove va:</b> nel secret del repository o in <code>data/imports/</code> / <code>sync --file</code>, come indicato sotto.</div>
+<h2>Procedura</h2>
+<ol class="steps">
+<li>Crea in Google Calendar un calendario dedicato (es. "Ciclo") e inserisci un evento per ogni periodo, a giornata intera, con titolo <b>Ciclo</b> (vanno bene anche "Mestruazioni", "Periodo", 🩸). Un evento di più giorni indica la durata; uno di un solo giorno conta come giorno di flusso.</li>
+<li>Su computer apri <i>Impostazioni</i> &rarr; scegli il calendario &rarr; <i>Integra calendario</i> &rarr; <b>Indirizzo segreto in formato iCal</b> e copia l'URL.</li>
+<li>Salvalo come secret del repository (separa più URL con una riga per ciascuno):
+<pre><code>gh secret set ICS_URLS</code></pre></li>
+<li>Per provare in locale: <code>python -m cycle_notifier sync --source ics</code> con <code>ICS_URLS</code> nel file <code>.env</code>.</li>
+</ol>
+<h2>Limiti da conoscere</h2>
+<ul><li>L'URL segreto dà accesso in lettura a tutto il calendario a chiunque lo possieda: trattalo come una password e, se si diffonde, usa "Reimposta" in Google Calendar.</li><li>Gli eventi ricorrenti (RRULE) non vengono espansi: conta solo la prima occorrenza.</li><li>Gli eventi creati da cycle-notifier stesso (identificatore che termina con <code>@cycle-notifier</code>) vengono ignorati per evitare cicli di retroazione.</li></ul>
+<p class="muted">Affidabilità della fonte: <b>stabile</b> = formato documentato; <b>best-effort</b> = formato non documentato, letto in modo tollerante; <b>non ufficiale</b> = accesso senza API pubblica, può smettere di funzionare.</p>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>

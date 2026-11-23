@@ -1,0 +1,30 @@
+{
+  "startDate": "2025-11-01",
+  "endDate": "2026-11-01",
+  "menstrualCycles": [
+    {
+      "periodStartDate": "2026-06-06",
+      "periodLength": 5
+    },
+    {
+      "periodStartDate": "2026-07-04",
+      "periodLength": 5
+    },
+    {
+      "periodStartDate": "2026-08-01",
+      "periodLength": 5
+    },
+    {
+      "periodStartDate": "2026-08-29",
+      "periodLength": 5
+    },
+    {
+      "periodStartDate": "2026-09-26",
+      "periodLength": 5
+    },
+    {
+      "periodStartDate": "2026-10-24",
+      "periodLength": 5
+    }
+  ]
+}

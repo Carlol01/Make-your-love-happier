@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cycle-notifier"
+version = "0.1.0"
+description = "Promemoria email e calendario per il ciclo mestruale, con previsioni locali."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+  "icalendar>=5.0",
+  "requests>=2.31",
+  "python-dateutil>=2.9",
+  "mcp>=1.2,<2",
+  "tzdata",
+]
+
+[project.optional-dependencies]
+garmin = ["garminconnect"]
+crypto = ["cryptography>=42"]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+cycle-notifier = "cycle_notifier.cli:main"
+cycle-notifier-mcp = "cycle_notifier.mcp_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cycle_notifier"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = [".venv", "build"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

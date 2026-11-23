@@ -1,0 +1,39 @@
+# Configurazione di cycle-notifier. Le variabili d'ambiente e il file .env hanno la precedenza.
+
+[user]
+display_name = "Giulia"          # nome mostrato nei messaggi
+timezone = "Europe/Rome"
+default_lang = "it"
+
+[prediction]
+history_cycles = 6               # quanti cicli recenti usare per la media
+min_cycle_days = 21              # cicli più corti sono ignorati nei calcoli
+max_cycle_days = 45              # cicli più lunghi sono ignorati nei calcoli
+min_period_days = 2
+max_period_days = 10
+default_cycle_days = 28          # usato senza storico
+default_period_days = 5
+stale_after_factor = 2.0         # oltre 2 cicli senza dati: previsione "obsoleta", niente avvisi
+include_spotting = false
+weighted = false                 # media pesata (cicli recenti contano di più)
+
+[notifications]
+offsets_days = [3, 2]            # giorni di preavviso
+channels = ["email"]
+catch_up = false                 # recupera un avviso saltato (es. run mancato)
+min_days_between_same_offset = 15
+email_provider = "smtp"          # smtp | resend
+attach_ics = true
+
+[feed]
+mode = "gist"                    # gist | pages | none  (la variabile FEED_MODE ha la precedenza)
+event_title = "🌸 Ciclo previsto – {user}"   # usa un titolo neutro se condividi il calendario
+events_ahead = 2
+reminder_events = true
+alarm_time = "09:00"
+
+[sources]
+enabled = ["ics", "imports", "garmin"]
+ics_keywords = ["ciclo", "mestruazioni", "period", "periodo", "🩸"]
+date_order = "DMY"               # DMY | MDY | YMD per date ambigue nei CSV
+delete_imports_after_ingest = false

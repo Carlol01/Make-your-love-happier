@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>CSV / JSON generico · cycle-notifier</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site"><nav><a class="brand" href="../index.html">cycle-notifier</a><a href="../index.html#guide">Guide</a><a href="../contatti.html">Per chi riceve gli avvisi</a><a href="../converti.html">Convertitore</a><a href="../dashboard.html">Dashboard</a><a href="../privacy.html">Privacy</a></nav></header>
+<main>
+<p><a href="../index.html#guide">&larr; Tutte le guide</a></p>
+<h1>CSV / JSON generico <span class="badge stabile">stabile</span></h1>
+<p class="lead">Il formato più semplice: funziona con qualunque app, o a mano.</p>
+<div class="card"><b>Che cosa serve:</b> Un CSV o JSON con inizio e fine dei periodi.<br><b>Dove va:</b> nel secret del repository o in <code>data/imports/</code> / <code>sync --file</code>, come indicato sotto.</div>
+<h2>Procedura</h2>
+<p>CSV:</p>
+<pre><code>start_date,end_date,note
+2026-10-24,2026-10-28,
+24/10/2026,28/10/2026,anche dd/mm/aaaa</code></pre>
+<p>JSON (<code>end</code> può essere <code>null</code> se il periodo è in corso):</p>
+<pre><code>{"periods":[{"start":"2026-09-26","end":"2026-09-30"},{"start":"2026-10-24","end":null}]}</code></pre>
+<ol class="steps">
+<li>Salva il file in <code>data/imports/</code> (verrà letto una sola volta) oppure usa <code>python -m cycle_notifier sync --file periodi.csv</code>.</li>
+<li>Per aggiungere un singolo periodo: <code>python -m cycle_notifier add-period 2026-10-24 2026-10-28</code>.</li>
+</ol>
+<h2>Limiti da conoscere</h2>
+<ul><li>Le date ambigue (03/04/2026) seguono <code>date_order</code> in <code>config/config.toml</code>; le date ISO (AAAA-MM-GG) non sono mai ambigue.</li><li>Date nel futuro o precedenti al 2000 vengono scartate con un avviso.</li></ul>
+<p class="muted">Affidabilità della fonte: <b>stabile</b> = formato documentato; <b>best-effort</b> = formato non documentato, letto in modo tollerante; <b>non ufficiale</b> = accesso senza API pubblica, può smettere di funzionare.</p>
+</main>
+<footer>Sito statico e pubblico: non contiene dati personali. Le previsioni sono stime automatiche, non consigli medici.</footer>
+</body>
+</html>
