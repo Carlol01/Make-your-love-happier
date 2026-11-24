@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "last_run": null,
+  "last_run": "2026-11-24T08:57:56+01:00",
   "last_prediction": null,
   "feed": {
-    "sequence": 0,
-    "last_hash": null,
+    "sequence": 1,
+    "last_hash": "sha256:687c63764ca23ca50408cb132483d8bb5bb640a177ed54bbe1e38fece5506dd6",
     "published_at": null
   },
   "sent": {}
