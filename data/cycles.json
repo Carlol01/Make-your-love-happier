@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-25T14:53:30+01:00",
+  "updated_at": "2026-11-26T08:59:26+01:00",
   "periods": [],
   "excluded_days": [],
   "source_status": {
     "ics": {
-      "last_sync": "2026-11-25T14:53:30+01:00",
+      "last_sync": "2026-11-26T08:59:26+01:00",
       "periods": 0,
       "error": null
     },
     "garmin": {
-      "last_sync": "2026-11-25T14:53:30+01:00",
+      "last_sync": "2026-11-26T08:59:26+01:00",
       "periods": 0,
       "error": null
     }
